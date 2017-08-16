@@ -18,11 +18,11 @@ $ docker pull dduvnjak/dockerfile-from-image
 ----
 Step 2. Create a command alias: 
 ----
-alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm dduvnjak/dockerfile-from-image"
+$ alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm dduvnjak/dockerfile-from-image"
 ----
 Step 3. Retrieve the DockerFile
 ----
-dfimage jenkins-mijnschool
+$ dfimage jenkins-mijnschool
 ----
 
 == Retrieve the run command
