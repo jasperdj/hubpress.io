@@ -1,0 +1,39 @@
+= Backwards engineering docker instances
+// See https://hubpress.gitbooks.io/hubpress-knowledgebase/content/ for information about the parameters.
+// :hp-image: /covers/cover.png
+:published_at: 2018-08-16
+:hp-tags: docker, deployment
+:hp-alt-title: Two simple steps to backwards engineer docker instances.
+
+You get placed on this new project, are asked to work on an application, and you find out there is no documentation on the docker deployment on the remote server. What do you do? This article gives two simple steps in how to backwards engineer the creation and run command of a currently running docker instance. 
+
+== Retrieving the DockerFile
+First you'll probably want to replicate the docker instance on your own machine, or get the DockerFile in case the image needs tweaking. Retrieving the docker file can be done in three steps. 
+
+NOTE: This is windows compatible in case of using the Git Bash terminal.
+
+. Pull the following repository (this repo is windows compatible): 
+`docker pull dduvnjak/dockerfile-from-image`
+. Create a command alias: 
+`alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm dduvnjak/dockerfile-from-image"`
+. Retrieve the DockerFile
+`dfimage jenkins-mijnschool`
+
+== Retrieve the run command
+You now can create and tweak the image, but don't want to play around the configuration till the instance works. For this you can backwards engineer the used run command on a docker instance in three steps.
+
+NOTE: The following steps require pip to be installed. `sudo apt-get install python-pip`
+
+. Install runlike with pip
+` sudo pip install runlike`
+. Retrieve the container ID
+`$ docker ps` then get the first column, like for example `53b85b54569f`
+. Get the run command
+`$ runlike 53b85b54569f
+
+docker run --name=jenkins-mijnschool --env="PATH=/usr/local/sbin/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" --env="LANG=C.UTF-8" `
+
+
+
+
+
