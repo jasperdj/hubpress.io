@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://jasperdj.github.io</link><generator>RSS for Node</generator><lastBuildDate>Wed, 16 Aug 2017 12:52:28 GMT</lastBuildDate><atom:link href="https://jasperdj.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Backwards engineering docker instances]]></title><description><![CDATA[<div id="preamble">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://jasperdj.github.io</link><generator>RSS for Node</generator><lastBuildDate>Wed, 16 Aug 2017 12:53:41 GMT</lastBuildDate><atom:link href="https://jasperdj.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Backwards engineering docker instances]]></title><description><![CDATA[<div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>You get placed on this new project, are asked to work on an application, and you find out there is no documentation on the docker deployment on the remote server. What do you do? This article gives two simple steps in how to backwards engineer the creation and run command of a currently running docker instance.</p>
@@ -36,7 +36,7 @@ This is windows compatible in case of using the Git Bash terminal.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm dduvnjak/dockerfile-from-image"</pre>
+<pre>$ alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm dduvnjak/dockerfile-from-image"</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -44,7 +44,7 @@ This is windows compatible in case of using the Git Bash terminal.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>dfimage jenkins-mijnschool</pre>
+<pre>$ dfimage jenkins-mijnschool</pre>
 </div>
 </div>
 </div>
