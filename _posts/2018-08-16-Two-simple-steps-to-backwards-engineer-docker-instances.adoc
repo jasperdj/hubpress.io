@@ -12,26 +12,40 @@ First you'll probably want to replicate the docker instance on your own machine,
 
 NOTE: This is windows compatible in case of using the Git Bash terminal.
 
-. Pull the following repository (this repo is windows compatible): 
-`docker pull dduvnjak/dockerfile-from-image`
-. Create a command alias: 
-`alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm dduvnjak/dockerfile-from-image"`
-. Retrieve the DockerFile
-`dfimage jenkins-mijnschool`
+Step 1. Pull the following repository (this repo is windows compatible): 
+----
+$ docker pull dduvnjak/dockerfile-from-image
+----
+Step 2. Create a command alias: 
+----
+alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm dduvnjak/dockerfile-from-image"
+----
+Step 3. Retrieve the DockerFile
+----
+dfimage jenkins-mijnschool
+----
 
 == Retrieve the run command
 You now can create and tweak the image, but don't want to play around the configuration till the instance works. For this you can backwards engineer the used run command on a docker instance in three steps.
 
-NOTE: The following steps require pip to be installed. `sudo apt-get install python-pip`
+NOTE: The following steps require pip to be installed (sudo apt-get install python-pip).
 
-. Install runlike with pip
-` sudo pip install runlike`
-. Retrieve the container ID
-`$ docker ps` then get the first column, like for example `53b85b54569f`
-. Get the run command
-`$ runlike 53b85b54569f
+Step 1. Install runlike with pip
+----
+$ sudo pip install runlike
+----
+Step 2. Retrieve the container ID
+----
+$ docker ps
+----
+Then get the first column, like for example `53b85b54569f`.
 
-docker run --name=jenkins-mijnschool --env="PATH=/usr/local/sbin/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" --env="LANG=C.UTF-8" `
+Step 3. Get the run command
+----
+$ runlike 53b85b54569f
+
+Example output: docker run --name=jenkins-mijnschool --env="PATH=/usr/local/sbin/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" --env="LANG=C.UTF-8" 
+----
 
 
 
