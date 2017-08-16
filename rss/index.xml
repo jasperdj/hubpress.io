@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://jasperdj.github.io</link><generator>RSS for Node</generator><lastBuildDate>Wed, 16 Aug 2017 12:45:25 GMT</lastBuildDate><atom:link href="https://jasperdj.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Backwards engineering docker instances]]></title><description><![CDATA[<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>You get placed on this new project, are asked to work on an application, and you find out there is no documentation on the docker deployment on the remote server. What do you do? This article gives two simple steps in how to backwards engineer the creation and run command of a currently running docker instance.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_retrieving_the_dockerfile">Retrieving the DockerFile</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First you&#8217;ll probably want to replicate the docker instance on your own machine, or get the DockerFile in case the image needs tweaking. Retrieving the docker file can be done in three steps.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is windows compatible in case of using the Git Bash terminal.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Pull the following repository (this repo is windows compatible):
+<code>docker pull dduvnjak/dockerfile-from-image</code></p>
+</li>
+<li>
+<p>Create a command alias:
+<code>alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm dduvnjak/dockerfile-from-image"</code></p>
+</li>
+<li>
+<p>Retrieve the DockerFile
+<code>dfimage jenkins-mijnschool</code></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_retrieve_the_run_command">Retrieve the run command</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You now can create and tweak the image, but don&#8217;t want to play around the configuration till the instance works. For this you can backwards engineer the used run command on a docker instance in three steps.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The following steps require pip to be installed. <code>sudo apt-get install python-pip</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install runlike with pip
+` sudo pip install runlike`</p>
+</li>
+<li>
+<p>Retrieve the container ID
+<code>$ docker ps</code> then get the first column, like for example <code>53b85b54569f</code></p>
+</li>
+<li>
+<p>Get the run command
+`$ runlike 53b85b54569f</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>docker run --name=jenkins-mijnschool --env="PATH=/usr/local/sbin/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" --env="LANG=C.UTF-8" `</p>
+</div>
+</div>
+</div>]]></description><link>https://jasperdj.github.io/2018/08/16/Two-simple-steps-to-backwards-engineer-docker-instances.html</link><guid isPermaLink="true">https://jasperdj.github.io/2018/08/16/Two-simple-steps-to-backwards-engineer-docker-instances.html</guid><category><![CDATA[docker]]></category><category><![CDATA[deployment]]></category><pubDate>Thu, 16 Aug 2018 00:00:00 GMT</pubDate></item></channel></rss>
